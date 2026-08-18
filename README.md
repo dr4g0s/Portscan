@@ -1,43 +1,47 @@
-Python Nmap Port Scanner
-A robust, Python-based network utility designed for scanning open ports and identifying services on a target machine. This tool utilizes the python-nmap library to provide a programmatic interface for the Nmap scanning engine, making it ideal for security auditing in controlled lab environments.
+Python Port Scanner
 
+A lightweight command-line wrapper around Nmap written in Python. It streamlines the scanning process by automatically resolving URLs/hostnames, performing pre-scan host discovery, and executing targeted port scans with clean, readable output.
 Features
-Full Range Scanning: Checks all 65,535 TCP ports.
 
-Performance Optimized: Uses the -T4 timing template for faster execution.
+    Smart Target Parsing: Accepts bare IPs, hostnames (e.g., example.com), or full URLs (e.g., [https://example.com/path](https://example.com/path)) and resolves them to a primary IP.
 
-Service Detection: Identifies the name of the service running on each open port.
+    Pre-Scan Discovery: Uses ICMP/host discovery (-sn) to verify a host is online before committing to a time-consuming port scan.
 
-Cross-Platform: Fully compatible with Arch Linux and Windows.
+    Custom Scan Profiles: Choose between quick sweeps, default Nmap top-1000, full 65,535 port sweeps, or service version detection.
 
+    Clean Output: Filters out noise by only displaying open, filtered, or open|filtered ports, preventing terminal clutter from thousands of closed ports.
 
+    Firewall Bypass: Includes a -Pn flag to force a scan on hosts that drop ping requests.
 Prerequisites
-1. System Requirements
-You must have the Nmap binary installed on your system.
 
-Arch Linux: sudo pacman -S nmap
+This script requires the nmap system binary and the python-nmap library.
 
-Windows: Download the installer from nmap.org and ensure Nmap is added to your System PATH.
+_**Arch Linux:**_
 
-2. Python Library
-Install the Nmap wrapper for Python:
+  sudo pacman -S nmap
+  pip install python-nmap
 
-Bash
-pip install python-nmap
+_**Debian/Ubuntu:**_
+  
+  sudo apt install nmap
+  pip install python-nmap
 
 Usage
-Clone the repository:
 
-Bash
-git clone https://github.com/dr4g0s/Portscan.git
-cd Portscan
+You can run the script interactively or provide arguments directly via the command line.
+  # Interactive mode (prompts for a target)
+python3 portscan.py
+
+# Scan a direct IP or domain (uses the 'default' profile)
+python3 portscan.py 192.168.1.10
+python3 portscan.py https://example.com
+
+# Specify a scan profile
+python3 portscan.py 10.129.2.45 --profile quick
+python3 portscan.py 10.129.2.45 -p service
+
+# Force scan if the host blocks ping discovery
+python3 portscan.py 10.129.2.45 -Pn
 
 
-Run the script:
-On Arch Linux, it is recommended to run with sudo to allow Nmap to use raw sockets for more accurate scanning:
-
-Bash
-sudo python scanner.py
-
-Disclaimer
-This tool is intended for educational purposes and authorized security testing only. Unauthorized scanning of networks or devices you do not own is illegal and unethical. Use this responsibly within your own lab environment.
+**Legal Warning: Only scan networks and hosts that you own or have explicit, written permission to test. Unauthorized port scanning is considered malicious behavior and is a criminal offense in most jurisdictions.**
