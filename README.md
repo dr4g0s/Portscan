@@ -34,7 +34,7 @@ python3 portscan.py
 
 # Scan a direct IP or domain (uses the 'default' profile)
 python3 portscan.py 192.168.1.10
-python3 portscan.py https://example.com
+python3 portscan.py https://(example.com)
 
 # Specify a scan profile
 python3 portscan.py 10.129.2.45 --profile quick
