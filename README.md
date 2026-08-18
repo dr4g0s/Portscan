@@ -16,12 +16,12 @@ Prerequisites
 
 This script requires the nmap system binary and the python-nmap library.
 
-_**Arch Linux:**_
+# _**Arch Linux:**_
 
   sudo pacman -S nmap
   pip install python-nmap
 
-_**Debian/Ubuntu:**_
+# _**Debian/Ubuntu:**_
   
   sudo apt install nmap
   pip install python-nmap
