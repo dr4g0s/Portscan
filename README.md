@@ -16,8 +16,12 @@ This script requires the `nmap` system binary and the `python-nmap` library.
 
 **Arch Linux:**
 ` ` `bash
-sudo pacman -S nmap
+python -m venv venv
+source venv/bin/activate
 pip install python-nmap
+sudo pacman -S nmap
+
+
 
 
 **Debian/Ubuntu:**
@@ -31,18 +35,18 @@ You can run the script interactively or provide arguments directly via the comma
 
 ` ` `bash
 # Interactive mode (prompts for a target)
-python3 portscan.py
+python3 scanner.py
 
 # Scan a direct IP or domain (uses the 'default' profile)
-python3 portscan.py 192.168.1.10
-python3 portscan.py https://example.com
+python3 scanner.py 192.168.1.10
+python3 scanner.py https://example.com
 
 # Specify a scan profile
-python3 portscan.py 10.129.2.45 --profile quick
-python3 portscan.py 10.129.2.45 -p service
+python3 scanner.py 10.129.2.45 --profile quick
+python3 scanner.py 10.129.2.45 -p service
 
 # Force scan if the host blocks ping discovery
-python3 portscan.py 10.129.2.45 -Pn
+python3 scanner.py 10.129.2.45 -Pn
 ` ` `
 
 ### Scan Profiles
