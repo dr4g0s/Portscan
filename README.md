@@ -35,18 +35,20 @@ You can run the script interactively or provide arguments directly via the comma
 
 ` ` `bash
 # Interactive mode (prompts for a target)
-python3 scanner.py
+python3 Scanner.py
 
 # Scan a direct IP or domain (uses the 'default' profile)
-python3 scanner.py 192.168.1.10
-python3 scanner.py https://example.com
+python3 Scanner.py 192.168.1.10
+
+python3 Scanner.py https://example.com
 
 # Specify a scan profile
-python3 scanner.py 10.129.2.45 --profile quick
-python3 scanner.py 10.129.2.45 -p service
+python3 Scanner.py 10.129.2.45 --profile quick
+
+python3 Scanner.py 10.129.2.45 -p service
 
 # Force scan if the host blocks ping discovery
-python3 scanner.py 10.129.2.45 -Pn
+python3 Scanner.py 10.129.2.45 -Pn
 ` ` `
 
 ### Scan Profiles
